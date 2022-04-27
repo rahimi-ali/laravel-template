@@ -1,0 +1,29 @@
+openapi: 3.0.0
+info:
+  title: API
+  version: 0.0.1
+paths:
+  /hello-world:
+    get:
+      summary: prints hello world
+      operationId: helloWorld
+      tags:
+        - sample
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Sample'
+components:
+  schemas:
+    Sample:
+      type: object
+      required:
+        - message
+      properties:
+        message:
+          type: string
+          description: A message that can be displayed to the user
+          example: Hello World

@@ -1,0 +1,8 @@
+type: object
+required:
+  - message
+properties:
+  message:
+    type: string
+    description: A message that can be displayed to the user
+    example: Hello World

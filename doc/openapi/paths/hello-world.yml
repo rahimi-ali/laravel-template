@@ -1,0 +1,12 @@
+get:
+  summary: prints hello world
+  operationId: helloWorld
+  tags:
+    - sample
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: "../schemas/Sample.yml"

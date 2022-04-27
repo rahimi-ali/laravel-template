@@ -1,0 +1,5 @@
+docker-compose up -d
+docker-compose exec -T laravel.test composer fix
+docker-compose exec -T laravel.test composer test
+docker-compose exec -T laravel.test composer analyze
+docker-compose exec -T laravel.test npm run unify-docs

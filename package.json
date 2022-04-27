@@ -1,0 +1,10 @@
+{
+  "devDependencies": {
+    "swagger-cli": "^4.0.4"
+  },
+  "scripts": {
+    "unify-docs-yaml": "swagger-cli bundle --outfile doc/openapi/openapi-unified.yaml --type=yaml doc/openapi/openapi.yml",
+    "unify-docs-json": "swagger-cli bundle --outfile doc/openapi/openapi-unified.json --type=json doc/openapi/openapi.yml",
+    "unify-docs": "npm run unify-docs-json && npm run unify-docs-yaml"
+  }
+}
