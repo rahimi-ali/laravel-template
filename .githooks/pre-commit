@@ -12,10 +12,8 @@ if [ "$old_stash" != "$new_stash" ]; then # if unstaged changes were stashed rea
     git stash pop
 fi
 
-docker-compose exec -T laravel.test composer test
+docker-compose exec -T laravel.test composer test || EXIT=$?
 
-docker-compose exec -T laravel.test composer analyze
+docker-compose exec -T laravel.test composer analyze || EXIT=$?
 
-docker-compose exec -T laravel.test npm run unify-docs
-
-exit 0
+docker-compose exec -T laravel.test npm run unify-docs || EXIT=$?
