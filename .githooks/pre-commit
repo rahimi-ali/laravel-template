@@ -1,5 +1,21 @@
 docker-compose up -d
+
+# stash unstaged changes
+git commit --no-verify -m 'Save index'
+old_stash=$(git rev-parse -q --verify refs/stash)
+git stash push -m 'Unstaged changes'
+new_stash=$(git rev-parse -q --verify refs/stash)
+git reset --soft HEAD^
 docker-compose exec -T laravel.test composer fix
+git add -u
+if [ "$old_stash" != "$new_stash" ]; then # if unstaged changes were stashed reapply to working tree
+    git stash pop
+fi
+
 docker-compose exec -T laravel.test composer test
+
 docker-compose exec -T laravel.test composer analyze
+
 docker-compose exec -T laravel.test npm run unify-docs
+
+exit 0
